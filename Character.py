@@ -17,17 +17,27 @@ class Character:
         return output
 
 def create_character():
-    #Separate file or function for prompts?
+    options = user_prompts()
+    use_techniques = options[0]
+    use_backgrounds = options[1]
+    use_erachima = options[2]
+    name = name_gen()
+    race = race_gen(use_backgrounds)
+    rituals = ritual_gen(use_techniques)
+    stats = stats_gen()
+    personality = personality_gen()
+    powers = powers_gen()
+    return Character(name, race, rituals, stats, personality, powers)
+
+def user_prompts():
     done = False
     while (not done):
         techniques = input("Would you like to use Techniques instead of Rituals? (Y/N)\n")
         if (techniques.upper() == "Y"):
             use_techniques = True
-            use_rituals = False
             done = True
         elif (techniques.upper() == "N"):
             use_techniques = False
-            use_rituals = True
             done = True
         else:
             print('Please enter "Y" or "N".\n')
@@ -53,13 +63,7 @@ def create_character():
             done = True
         else:
             print('Please enter "Y" or "N".\n')
-    name = name_gen()
-    race = race_gen(use_backgrounds)
-    rituals = ritual_gen(use_techniques)
-    stats = stats_gen()
-    personality = personality_gen()
-    powers = powers_gen()
-    return Character(name, race, rituals, stats, personality, powers)
+    return [use_techniques, use_backgrounds, use_erachima]
 
 def name_gen():
     return "Name Gen created."
