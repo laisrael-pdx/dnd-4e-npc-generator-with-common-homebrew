@@ -8,19 +8,18 @@ class Character:
         self.powers = powers
     def __str__(self):
         output = ""
-        output += (self.name + ";")
-        output += (self.race + ";")
-        output += ", ".join(self.rituals)
-        output += (", ".join(str(stat) for stat in self.stats) + ";")
-        output += (self.personality + ";")
+        output += (self.name + "\n")
+        output += (self.race + "\n")
+        output += (", ".join(self.rituals) + "\n")
+        output += (", ".join(str(stat) for stat in self.stats) + "\n")
+        output += (self.personality + "\n")
         output += ", ".join(self.powers)
         return output
 
 def create_character():
-    options = user_prompts()
-    use_techniques = options[0]
-    use_backgrounds = options[1]
-    use_erachima = options[2]
+    use_techniques = True
+    use_backgrounds = True
+    use_erachima = True
     name = name_gen()
     race = race_gen(use_backgrounds)
     rituals = ritual_gen(use_techniques)
@@ -28,42 +27,6 @@ def create_character():
     personality = personality_gen()
     powers = powers_gen()
     return Character(name, race, rituals, stats, personality, powers)
-
-def user_prompts():
-    done = False
-    while (not done):
-        techniques = input("Would you like to use Techniques instead of Rituals? (Y/N)\n")
-        if (techniques.upper() == "Y"):
-            use_techniques = True
-            done = True
-        elif (techniques.upper() == "N"):
-            use_techniques = False
-            done = True
-        else:
-            print('Please enter "Y" or "N".\n')
-    done = False
-    while (not done):
-        backgrounds = input("Would you like to use Backgrounds instead of Races? (Y/N)\n")
-        if (backgrounds.upper() == "Y"):
-            use_backgrounds = True
-            done = True
-        elif (backgrounds.upper() == "N"):
-            use_backgrounds = False
-            done = True
-        else:
-            print('Please enter "Y" or "N".\n')
-    done = False
-    while(not done):
-        erachima = input("Would you like to use some of Erachima's classes and feats? (Y/N)\n")
-        if (erachima.upper() == "Y"):
-            use_erachima = True
-            done = True
-        elif (erachima.upper() == "N"):
-            use_erachima = False
-            done = True
-        else:
-            print('Please enter "Y" or "N".\n')
-    return [use_techniques, use_backgrounds, use_erachima]
 
 def name_gen():
     return "Name Gen created."
