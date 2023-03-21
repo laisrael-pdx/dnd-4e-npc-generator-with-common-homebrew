@@ -3,10 +3,10 @@ from Character import create_character
 
 class MyFrame(wx.Frame):
     def __init__(self):
-        super().__init__(parent = None, title = 'Hey look, it works! :)')
+        super().__init__(parent = None, title = "Hey look, it works! :)")
         panel = wx.Panel(self)
         my_sizer = wx.BoxSizer(wx.VERTICAL)
-        user_input = self.ask(message = 'Test Input')
+        user_input = self.ask(message = "Test Input")
         print(f"Test output: {user_input}.")
         new_character = create_character()
         print("Your character is: ")
@@ -15,7 +15,7 @@ class MyFrame(wx.Frame):
         panel.SetSizer(my_sizer)
         self.Show()
 
-    def ask(self, parent=None, message=''):
+    def ask(self, parent=None, message=""):
         dialogue = wx.TextEntryDialog(parent, message)
         dialogue.ShowModal()
         result = dialogue.GetValue()
