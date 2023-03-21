@@ -6,12 +6,23 @@ class MyFrame(wx.Frame):
         super().__init__(parent = None, title = "Hey look, it works! :)")
         panel = wx.Panel(self)
         my_sizer = wx.BoxSizer(wx.VERTICAL)
-        user_input = self.ask(message = "Test Input")
-        print(f"Test output: {user_input}.")
-        new_character = create_character()
+        ask_techniques = self.ask(message = "Would you like to use techniques? (enter \"y\" or \"n\")")
+        ask_techniques = ask_techniques.upper()
+        if (ask_techniques == "Y"):
+            use_techniques = True
+        else:
+            use_techniques = False
+        ask_backgrounds = self.ask(message = "Would you like to use backgrounds? (enter \"y\" or \"n\")")
+        ask_backgrounds = ask_backgrounds.upper()
+        if (ask_backgrounds == "Y"):
+            use_backgrounds = True
+        else:
+            use_backgrounds = False
+        new_character = create_character(use_techniques, use_backgrounds)
         print("Your character is: ")
         print(new_character)
         test_text2 = wx.StaticText(panel, label = new_character.__str__())
+        wx.StaticText.Wrap(test_text2, 380)
         panel.SetSizer(my_sizer)
         self.Show()
 

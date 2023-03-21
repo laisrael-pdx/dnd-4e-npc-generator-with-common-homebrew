@@ -18,12 +18,9 @@ class Character:
         output += ", ".join(self.powers)
         return output
 
-def create_character():
+def create_character(use_techniques=True, use_backgrounds=True):
     random.seed()
     #Optional inputs, replace existing features
-    use_techniques = True
-    use_backgrounds = True
-    use_erachima = True
     name = name_gen()
     race = race_gen(use_backgrounds)
     rituals = ritual_gen(use_techniques)
@@ -47,9 +44,9 @@ def race_gen(use_backgrounds):
 
 def ritual_gen(use_techniques):
     if (use_techniques):
-        return ["Ritual Gen set to use Techniques."]
+        return ["Panoply Lore"]
     else:
-        return ["Ritual Gen set to default, to use Rituals."]
+        return ["Temporary Fix"]
 
 def stats_gen():
     stats = [18, 17, 13, 12, 10, 8]
@@ -65,29 +62,23 @@ def powers_gen(stats):
     primary_stat = max(range(len(stats)), key=stats.__getitem__)
     #Strength Primary
     if (primary_stat == 0):
-        #Stuff happens
-        pass
+        powers = ["Standard Action - Melee - Pummel - 1d20+4 vs. AC - 1d8+4 damage", "Standard Action - Melee - Shove - 1d20+4 vs. Reflex - 1d6+4 damage and push 2", "Standard Action - Melee - Gut Punch - 1d20+4 vs. Fortitude - 1d6+4 damage and target falls prone"]
     #Dexterity Primary
     elif (primary_stat == 1):
-        #Stuff happens
-        pass
+        powers = ["Standard Action - Ranged 5 - Pocket Sand - 1d20+4 vs. AC - 4 damage and the target is blinded until the end of their next turn.", "Standard Action - Melee - Quick Slash - 1d20+4 vs. AC - 1d4+4 damage and ongoing 2 damage (save ends)", "Immediate Reaction Trigger on an enemy moving adjacent - Personal - Split - The NPC may shift up to their speed, ending their movement further from the triggering enemy than they started."]
     #Constitution Primary
     elif (primary_stat == 2):
-        #Stuff happens
-        pass
+        powers = ["Standard Action - Melee - Wrestle - 1d20+4 vs. AC - 1d4+4 damage and the target is grabbed and prone.", "Standard Action against a prone enemy - Melee - Pin - 1d20+4 vs. Fortitude - 1d6+4 damage and the target cannot stand until the end of their next turn.", "No Action - Personal - Endure - If the NPC would fall unconscious due to being at 0 or fewer hitpoints, they remain conscious until the end of their next turn."]
     #Intelligence Primary
     elif (primary_stat == 3):
-        #Stuff happens
-        pass
+        powers = ["Standard Action - Ranged 20 - Magic Missile - 4 damage", "Standard Action - Ranged 10 - Fire Bolt - 1d20+4 vs. Reflex - 1d6+4 fire damage", "Minor Action - Anyone who can hear the NPC - Lecture - 1d20+4 vs. Will - 1d4+4 psychic damage and the target is slowed."]
     #Wisdom Primary
     elif (primary_stat == 4):
-        #Stuff happens
-        pass
+        powers = ["Standard Action - Ranged 10 - Invoke - 1d20+4 vs. Reflex - 1d4+4 radiant damage", "Standard Action - Melee - Find Opening - 1d20+4 vs. AC - 1d4+4 damage and the target grants combat advantage (save ends)", "No Action - Personal - Overcome - The NPC makes a saving throw against all conditions currently affecting them, even if that condition does not allow saving throws."]
     #Charisma Primary, catch-all
     else:
-        #Stuff happens
-        pass
-    return ["Test Power 1", "Test Power 2", "Test Power 3"]
+        powers = ["Standard Action - Ranged 5 - Insult - 1d20+4 vs. Will - 1d6+4 pyschic damage and target takes a -2 to attack rolls until the end of their next turn.", "Standard Action - Close Burst 2 - Pacify - 1d20+4 vs. Will - 1d4+4 damage and the target takes a -2 penalty to damage rolls until the end of their next turn.", "Minor Action - All enemies who can hear - Quick Talker - For this turn, the NPC does not provoke attacks of opportunity."]
+    return powers
 
 """
 References:
